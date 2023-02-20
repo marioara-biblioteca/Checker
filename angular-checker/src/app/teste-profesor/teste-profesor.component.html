@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<style>
+body {
+  margin: 0;
+  font-family: "Lato", sans-serif;
+}
+
+.sidebar {
+  margin: 0;
+  padding: 0;
+  width: 200px;
+  background-color: #232b2b;
+  position: fixed;
+  height: 100%;
+  overflow: auto;
+}
+
+.sidebar a {
+  display: block;
+  color: #ffffff;
+  padding: 16px;
+  text-decoration: none;
+}
+
+.sidebar a.active {
+  background-color: #513e3e;
+  color: white;
+}
+
+.sidebar a:hover:not(.active) {
+  background-color: #555;
+  color: white;
+}
+
+div.content {
+  margin-left: 200px;
+  padding: 1px 16px;
+  height: 1000px;
+}
+
+@media screen and (max-width: 700px) {
+  .sidebar {
+    width: 100%;
+    height: auto;
+    position: relative;
+  }
+  .sidebar a {float: left;}
+  div.content {margin-left: 0;}
+}
+
+@media screen and (max-width: 400px) {
+  .sidebar a {
+    text-align: center;
+    float: none;
+  }
+}
+</style>
+</head>
+<body>
+
+<div class="sidebar">
+    <a href="/home_profesor">Home</a>
+    <a href="/subject_profesor">Cursuri</a>
+    <a   href="/task_profesor">Taskuri</a>
+    <a class="active" href="/teste_profesor">Teste</a>
+</div>
+
+<div class="content">
+    <h2>Taskuri</h2>
+    <table class="table">
+      <thead>
+        <tr>
+          <th scope="col">#</th>
+          <th scope="col">id</th>
+          <th scope="col">Link</th>
+
+        </tr>
+      </thead>
+      <tbody>
+
+        <tr *ngFor="let test of testList ;index as i">
+          <th scope="row">{{i}}</th>
+            <td>{{test.test_id}}
+            </td>
+            <td>{{test.link}}
+                <a href="{{test.link}}" target="_blank">LINK</a>
+            </td>
+
+
+        </tr>
+
+      </tbody>
+    </table>
+    <h1>add tests</h1>
+    <form (submit)="postData()">
+        <!-- <div>
+          <!-- <label for="link">link</label>
+          <input type="text" id="link" [(ngModel)]="data.link" name="link" />
+        </div> -->
+        <div>
+        <input type="file" class="file-upload" id="link" name="link" [(ngModel)]="data.link"onchange="console.log(event.target.files)">
+
+</div>
+
+        <button type="submit">Submit</button>
+      </form>
+</div>
+
+</body>
+</html>

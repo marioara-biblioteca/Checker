@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<style>
+body {
+  margin: 0;
+  font-family: "Lato", sans-serif;
+}
+
+.sidebar {
+  margin: 0;
+  padding: 0;
+  width: 200px;
+  background-color: #232b2b;
+  position: fixed;
+  height: 100%;
+  overflow: auto;
+}
+
+.sidebar a {
+  display: block;
+  color: #ffffff;
+  padding: 16px;
+  text-decoration: none;
+}
+
+.sidebar a.active {
+  background-color: #513e3e;
+  color: white;
+}
+
+.sidebar a:hover:not(.active) {
+  background-color: #555;
+  color: white;
+}
+
+div.content {
+  margin-left: 200px;
+  padding: 1px 16px;
+  height: 1000px;
+}
+
+@media screen and (max-width: 700px) {
+  .sidebar {
+    width: 100%;
+    height: auto;
+    position: relative;
+  }
+  .sidebar a {float: left;}
+  div.content {margin-left: 0;}
+}
+
+@media screen and (max-width: 400px) {
+  .sidebar a {
+    text-align: center;
+    float: none;
+  }
+}
+</style>
+</head>
+<body>
+
+<div class="sidebar">
+  <a  href="/home_student">Home</a>
+  <a href="/subject_student">Cursuri</a>
+
+</div>
+
+<div class="content">
+    <h2>Upload tema</h2>
+     <table class="table">
+      <thead>
+        <tr>
+          <th scope="col">#</th>
+          <th scope="col">Result</th>
+          <th scope="col">Result link</th>
+          <th scope="col">Task Id</th>
+
+        </tr>
+      </thead>
+      <tbody>
+
+        <tr *ngFor="let result of resultList ;index as i">
+          <th scope="row">{{i}}</th>
+
+            <td>{{result.sourceLink}}
+            </td>
+
+
+
+
+          <td><a href="{{result.sourceLink}}" target="_blank" class="btn btn-primary">Link</a></td>
+
+
+        </tr>
+
+      </tbody>
+    </table>
+    <h2>Task {{taskid}}</h2>
+    <table class="table">
+      <thead>
+        <tr>
+          <th scope="col">#</th>
+          <th scope="col">Task Dead Line</th>
+          <th scope="col"></th>
+
+        </tr>
+      </thead>
+      <tbody>
+
+        <tr *ngFor="let task of taskList ;index as i">
+          <th scope="row">{{i}}</th>
+            <td>{{task.deadLine}}
+            </td>
+            <td>{{task.requirement}}
+            </td>
+            <td>{{task.subjectName}}
+            </td>
+            <td>
+              {{task.taskId}}
+            </td>
+
+
+          <td><a href="/upload_student/{{task.taskId}}" class="btn btn-primary">Results</a></td>
+
+
+        </tr>
+
+      </tbody>
+    </table>
+    <form (submit)="postData2()">
+      <input type="file"  id="file" name="file" [(ngModel)]="selectedFile" (change)="onFileChanged($event)" >
+      <button type="submit">Upload</button>
+
+    </form>
+    <embed type="text/html" src="http://localhost:8080/upload-file-student/3"  width="500" height="500">
+
+</div>
+
+</body>
+</html>

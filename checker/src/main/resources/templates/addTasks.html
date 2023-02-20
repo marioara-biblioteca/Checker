@@ -1,0 +1,33 @@
+<html xmlns:th="http://www.thymeleaf.org">
+<body>
+<form th:action="@{/add-task}" th:object="${addTaskForm}" method="post">
+
+
+  <div class="title"><span>Add Task Form</span></div>
+  <p th:if="${error}" class="error">UserName & Password Incorrect</p>
+
+<!--  Cerinta-->
+  <div class="row">
+    <label for="requirement">Requirement: </label>
+    <input type="text" name="requirement" id="requirement">
+  </div>
+<!--  Subject name-->
+  <div class="row">
+    <label for="subjectName">Subject name: </label>
+    <input type="text" name="subjectName" id="subjectName">
+  </div>
+  <div class="row">
+    <label for="testLink">Test link: </label>
+    <input type="text" name="testLink" id="testLink">
+  </div>
+  <div class="row">
+    <label for="deadLine"> DeadLine: </label>
+    <input type="text" name="deadLine" id="deadLine">
+  </div>
+
+  <div class="row button">
+    <input type="submit" value="Add Task">
+  </div>
+</form>
+</body>
+</html>

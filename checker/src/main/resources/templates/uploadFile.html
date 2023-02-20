@@ -1,0 +1,47 @@
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <style>
+    *,
+    *:before,
+    *:after {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    }
+
+    body {
+    margin: 0;
+    padding: 2rem 1.5rem;
+    font: 1rem/1.5 "PT Sans", Arial, sans-serif;
+    color: #5a5a5a;
+    }
+    </style>
+</head>
+<body>
+<div th:if="${uploadedFile}">
+    <h2> Uploaded File Details </h2>
+    <table>
+        <tr>
+            <td th:text="${uploadedFile.fileName}">File Name</td><br>
+            <td th:text="${uploadedFile.mime}">File Type:</td><br>
+            <td th:text="${uploadedFile.url}">URL :</td>
+        </tr>
+    </table>
+</div>
+<div>
+    <h2> Uploaded New File </h2>
+    <form method="POST" enctype="multipart/form-data" th:action="@{/upload-file/{userId}/task/{taskId}(userId=${userId},taskId=${taskId})}">
+        <table>
+            <tr><td>File to upload:</td><td><input type="file" name="file" /></td></tr>
+
+            <tr><td></td><td><input type="submit"  class="btn btn-success" value="Upload" /></td></tr>
+        </table>
+    </form>
+</div>
+</body>
+</html>

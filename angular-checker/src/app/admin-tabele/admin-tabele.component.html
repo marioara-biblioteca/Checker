@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<style>
+body {
+  margin: 0;
+  font-family: "Lato", sans-serif;
+}
+
+.sidebar {
+  margin: 0;
+  padding: 0;
+  width: 200px;
+  background-color: #232b2b;
+  position: fixed;
+  height: 100%;
+  overflow: auto;
+}
+
+.sidebar a {
+  display: block;
+  color: #ffffff;
+  padding: 16px;
+  text-decoration: none;
+}
+
+.sidebar a.active {
+  background-color: #513e3e;
+  color: white;
+}
+
+.sidebar a:hover:not(.active) {
+  background-color: #555;
+  color: white;
+}
+
+div.content {
+  margin-left: 200px;
+  padding: 1px 16px;
+  height: 1000px;
+}
+
+@media screen and (max-width: 700px) {
+  .sidebar {
+    width: 100%;
+    height: auto;
+    position: relative;
+  }
+  .sidebar a {float: left;}
+  div.content {margin-left: 0;}
+}
+
+@media screen and (max-width: 400px) {
+  .sidebar a {
+    text-align: center;
+    float: none;
+  }
+}
+</style>
+
+</head>
+<body>
+
+<div class="sidebar">
+  <a href="/home_admin">Home</a>
+  <a class="active" href="/admin_tabele">Tabele</a>
+  <a href="/Kubernetes">Kube</a>
+  <a href="/noutati">Noutati</a>
+</div>
+
+<div class="content">
+    <h2>Group Table</h2>
+    <table class="table">
+      <thead>
+        <tr>
+          <th scope="col">#</th>
+          <th scope="col">Identifier</th>
+          <th scope="col">series</th>
+        </tr>
+      </thead>
+      <tbody>
+
+        <tr *ngFor="let item of groupList ;index as i">
+          <th scope="row">{{i}}</th>
+            <td>{{item.groupIdentifier}}</td>
+
+          <td>{{item.series}}</td>
+        </tr>
+
+      </tbody>
+    </table>
+</div>
+</body>
+</html>

@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<style>
+body {
+  margin: 0;
+  font-family: "Lato", sans-serif;
+}
+
+.sidebar {
+  margin: 0;
+  padding: 0;
+  width: 200px;
+  background-color: #232b2b;
+  position: fixed;
+  height: 100%;
+  overflow: auto;
+}
+
+.sidebar a {
+  display: block;
+  color: #ffffff;
+  padding: 16px;
+  text-decoration: none;
+}
+
+.sidebar a.active {
+  background-color: #513e3e;
+  color: white;
+}
+
+.sidebar a:hover:not(.active) {
+  background-color: #555;
+  color: white;
+}
+
+div.content {
+  margin-left: 200px;
+  padding: 1px 16px;
+  height: 1000px;
+}
+
+@media screen and (max-width: 700px) {
+  .sidebar {
+    width: 100%;
+    height: auto;
+    position: relative;
+  }
+  .sidebar a {float: left;}
+  div.content {margin-left: 0;}
+}
+
+@media screen and (max-width: 400px) {
+  .sidebar a {
+    text-align: center;
+    float: none;
+  }
+}
+</style>
+</head>
+<body>
+
+<div class="sidebar">
+  <a  class="active" href="/home_profesor">Home</a>
+  <a href="/subject_profesor">Cursuri</a>
+  <a  href="/task_profesor">Taskuri</a>
+  <a href="/teste_profesor">Teste</a>
+</div>
+
+<div class="content">
+  <h2>Here is the content for profesor</h2>
+  <div id="container">
+    <div class="steam" id="steam1"> </div>
+    <div class="steam" id="steam2"> </div>
+    <div class="steam" id="steam3"> </div>
+    <div class="steam" id="steam4"> </div>
+
+    <div id="cup">
+      <div id="cup-body">
+
+        <div id="cup-shade"></div>
+      </div>
+      <br>
+      <br>
+      <div id="cup-handle"></div>
+    </div>
+
+    <div id="saucer"></div>
+
+    <div id="shadow"></div>
+  </div>
+</div>
+
+</body>
+</html>

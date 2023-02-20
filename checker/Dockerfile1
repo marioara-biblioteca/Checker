@@ -1,0 +1,14 @@
+
+FROM eclipse-temurin:17-jdk-alpine as build
+WORKDIR /app
+
+COPY mvnw .
+COPY .mvn .mvn
+COPY pom.xml .
+COPY src src
+
+RUN mkdir -p target
+RUN ./mvnw package
+COPY target/*.jar app.jar
+RUN mkdir ./uploads
+ENTRYPOINT ["java","-jar","./app.jar"]

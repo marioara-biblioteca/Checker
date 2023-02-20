@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<style>
+body {
+  margin: 0;
+  font-family: "Lato", sans-serif;
+}
+
+.sidebar {
+  margin: 0;
+  padding: 0;
+  width: 200px;
+  background-color: #232b2b;
+  position: fixed;
+  height: 100%;
+  overflow: auto;
+}
+
+.sidebar a {
+  display: block;
+  color: #ffffff;
+  padding: 16px;
+  text-decoration: none;
+}
+
+.sidebar a.active {
+  background-color: #513e3e;
+  color: white;
+}
+
+.sidebar a:hover:not(.active) {
+  background-color: #555;
+  color: white;
+}
+
+div.content {
+  margin-left: 200px;
+  padding: 1px 16px;
+  height: 1000px;
+}
+
+@media screen and (max-width: 700px) {
+  .sidebar {
+    width: 100%;
+    height: auto;
+    position: relative;
+  }
+  .sidebar a {float: left;}
+  div.content {margin-left: 0;}
+}
+
+@media screen and (max-width: 400px) {
+  .sidebar a {
+    text-align: center;
+    float: none;
+  }
+}
+</style>
+
+</head>
+<body>
+
+<div class="sidebar">
+  <a class="active" href="/home_admin">Home</a>
+  <a href="/admin_tabele">Tabele</a>
+  <a href="/Kubernetes">Kube</a>
+  <a href="/noutati">Noutati</a>
+</div>
+
+<div class="content">
+  <h2>User Table</h2>
+ <table class="table">
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">First</th>
+        <th scope="col">Last</th>
+        <th scope="col">Handle</th>
+      </tr>
+    </thead>
+    <tbody>
+
+      <tr *ngFor="let item of userList ;index as i">
+        <th scope="row">{{i}}</th>
+          <td>{{item.email}}
+          </td>
+
+        <td>{{item.lastName}}</td>
+        <td>{{item.firstName}}</td>
+      </tr>
+
+    </tbody>
+  </table>
+  <h2>Subject Table</h2>
+  <table class="table">
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Subject Name</th>
+        <th scope="col">Subject Status</th>
+      </tr>
+    </thead>
+    <tbody>
+
+      <tr *ngFor="let subject of subjectList ;index as i">
+        <th scope="row">{{i}}</th>
+          <td>{{subject.name}}
+          </td>
+
+        <td>{{subject.status}}</td>
+
+      </tr>
+
+    </tbody>
+  </table>
+  <h1>Add Subjects</h1>
+  <script>
+    function send() {
+        var name = document.getElementById("name").value;
+        var email = document.getElementById("status").value;
+
+        const xhr = new XMLHttpRequest();
+
+        // create a JSON object
+        const json = {
+            name: name,
+            status: email,
+        };
+
+        // open request
+        xhr.open("POST", "http://localhost:8080/subjects");
+
+        // set `Content-Type` header
+        xhr.setRequestHeader("Content-Type",
+                             "application/json");
+
+        // send request with JSON payload
+        xhr.send(JSON.stringify(json));
+    }
+</script>
+<form method="post" action="http://localhost:8080/subjects" Content-Type="application/x-www-form-urlencoded" accept="application/json">
+    <label for="name">Subject name:</label>
+    <input type="text"  id="name" name="name"><br><br>
+    <label for="first_name">First Name</label>
+    <input type="text" id="first_name" name="first_name"><br><br>
+    <label for="last_name">Last Name</label>
+    <input type="text" id="last_name" name="last_name"><br><br>
+    <button type="submit" >Send</button>
+</form>
+<!-- <h1>Add Users</h1>
+
+<form method="post" action="http://localhost:8080/users" Content-Type="application/x-www-form-urlencoded" accept="application/json">
+  <label for="email">email</label>
+  <input type="text"  id="email" name="email"><br><br>
+  <label for="status">Status:</label>
+  <input type="text" id="status" name="status"><br><br>
+  <button type="submit" >Send</button>
+</form> -->
+</div>
+</body>
+</html>

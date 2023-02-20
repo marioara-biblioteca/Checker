@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<style>
+body {
+  margin: 0;
+  font-family: "Lato", sans-serif;
+}
+
+.sidebar {
+  margin: 0;
+  padding: 0;
+  width: 200px;
+  background-color: #232b2b;
+  position: fixed;
+  height: 100%;
+  overflow: auto;
+}
+
+.sidebar a {
+  display: block;
+  color: #ffffff;
+  padding: 16px;
+  text-decoration: none;
+}
+
+.sidebar a.active {
+  background-color: #513e3e;
+  color: white;
+}
+
+.sidebar a:hover:not(.active) {
+  background-color: #555;
+  color: white;
+}
+
+div.content {
+  margin-left: 200px;
+  padding: 1px 16px;
+  height: 1000px;
+}
+
+@media screen and (max-width: 700px) {
+  .sidebar {
+    width: 100%;
+    height: auto;
+    position: relative;
+  }
+  .sidebar a {float: left;}
+  div.content {margin-left: 0;}
+}
+
+@media screen and (max-width: 400px) {
+  .sidebar a {
+    text-align: center;
+    float: none;
+  }
+}
+</style>
+</head>
+<body>
+
+
+  <div class="sidebar">
+    <a href="/home_profesor">Home</a>
+    <a href="/subject_profesor">Cursuri</a>
+    <a  class="active" href="/task_profesor">Taskuri</a>
+    <a href="/teste_profesor">Teste</a>
+
+  </div>
+<div class="content">
+    <h2>Subject Table</h2>
+    <table class="table">
+      <thead>
+        <tr>
+          <th scope="col">#</th>
+          <th scope="col">Curs</th>
+          <th scope="col">Deadline</th>
+          <th scope="col">REQ</th>
+
+          <th scope="col">Link</th>
+
+
+        </tr>
+      </thead>
+      <tbody>
+
+        <tr *ngFor="let task of taskList ;index as i">
+          <th scope="row">{{i}}</th>
+            <td>{{task.subjectName}}
+            </td>
+            <td>{{task.deadLine}}
+            </td>
+            <td>{{task.requirement}}
+            </td>
+            <td>{{task.testLink}}
+              <a  target="_blank" href="{{task.testLink}}">TEST</a>
+            </td>
+
+          <td><a href="" class="btn btn-primary">View</a></td>
+
+
+        </tr>
+
+      </tbody>
+    </table>
+    <!-- <form [formGroup]="taskForm" m (ngSubmit)="onSubmit()">
+      <div>
+        <label for="deadline">deadline</label>
+        <input type="text" formControlName="deadline" />
+      </div>
+      <div>
+        <label for="requirement">requirement</label>
+        <input type="text" formControlName="requirement" />
+      </div>
+      <div>
+        <label for="testLink">testLink</label>
+        <input type="text" formControlName="testLink" />
+      </div>
+      <div>
+        <label for="subjectName">subjectName</label>
+        <input type="text" formControlName="subjectName" />
+      </div>
+      <button type="submit" [disabled]="loading">Insert</button>
+    </form> -->
+    <!-- <form (submit)="postData()">
+      <div>
+        <label for="deadline">deadLine</label>
+        <input type="text" id="deadLine" [(ngModel)]="data.deadLine" name="deadLine" />
+      </div>
+      <div>
+        <label for="requirement">requirement</label>
+        <input type="text"  id="requirement" [(ngModel)]="data.requirement" name="requirement" />
+      </div>
+      <div>
+        <label for="testLink">testLink</label>
+        <input type="text "  id="testLink" [(ngModel)]="data.testLink" name="testLink" />
+      </div>
+      <div>
+        <label for="subjectName">subjectName</label>
+        <input type="text"  id="subjectName" [(ngModel)]="data.subjectName" name="subjectName"  />
+      </div>
+
+        <!-- <div>
+          <!-- <label for="link">link</label>
+          <input type="text" id="link" [(ngModel)]="data.link" name="link" />
+        </div> -->
+         <!-- <div>
+
+</div>
+    <button type="submit">Submit</button>
+
+    </form> -->
+    <!-- <form (submit)="postData2()">
+    <input type="file"  id="file" name="file" [(ngModel)]="selectedFile" (change)="onFileChanged($event)" >
+    <button type="submit">Upload</button>
+
+  </form> -->
+  <h1>Start creating an task</h1>
+ <embed  id="embed" type="text/html" src=""  width="500" height="500">
+
+</div>
+
+
+</body>
+</html>

@@ -1,0 +1,10 @@
+{
+  "type": "object",
+  "javaType": " kakfka_demo.schema.Document",
+  "properties": {
+    "userEmail": {"type": "string"},
+    "sourceLink": {"type": "string"},
+    "resultLink": {"type": "string"}
+
+  }
+}

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Bootstrap Example</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+</head>
+<body>
+
+<nav class="navbar navbar-inverse">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="#">WebSiteName</a>
+        </div>
+        <div class="collapse navbar-collapse" id="myNavbar">
+            <ul class="nav navbar-nav">
+                <li class="active"><a href="#">Home</a></li>
+                <li class="dropdown">
+                    <a class="dropdown-toggle" data-toggle="dropdown" href="#" class="glyphicon glyphicon-briefcase">Profesor <span class="glyphicon glyphicon-briefcase"></span></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="#" >Sign in</a></li>
+                        <li><a href="#">Register</a></li>
+                    </ul>
+                </li>
+                <li class="dropdown">
+
+                    <a class="dropdown-toggle" data-toggle="dropdown" href="#" class="glyphicon glyphicon-education">Student <span class="glyphicon glyphicon-education"></span></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="#" >Sign in</a></li>
+                        <li><a href="#">Register</a></li>
+                    </ul>
+                </li>
+                <li class="dropdown">
+
+                    <a class="dropdown-toggle" data-toggle="dropdown" href="#" class="glyphicon glyphicon-wrench" >Admin<span class="glyphicon glyphicon-wrench"></span></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="#"  >Sign in</a></li>
+                        <li><a href="#">Register</a></li>
+                    </ul>
+                </li>
+        </div>
+    </div>
+</nav>
+
+<div class="container">
+    <h3>Welcome to our checker</h3>
+    <button type="button" class="btn btn-primary btn-lg">Sign in as professor </button>
+    <button type="button" class="btn btn-secondary btn-lg">Sign in as student</button>
+</div>
+
+</body>
+</html>
